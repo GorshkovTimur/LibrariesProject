@@ -9,7 +9,7 @@ public class Model {
 
     private List<Integer> list;
 
-    public Model(List<Integer> list) {
+    public Model() {
         this.list = new ArrayList<>();
 
         for (int i = 0; i < 10 ; i++) {
