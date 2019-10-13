@@ -1,8 +1,10 @@
-package com.timmyg.librariesproject;
+package com.timmyg.librariesproject.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.timmyg.librariesproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
