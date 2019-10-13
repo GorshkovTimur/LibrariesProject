@@ -8,7 +8,7 @@ import com.timmyg.librariesproject.Model.Model;
 public class DetailPresenter {
 
     private static final String TAG = "DetailPresenter";
-
+    //
     private Model model;
     private DetailedView detailedView;
 
