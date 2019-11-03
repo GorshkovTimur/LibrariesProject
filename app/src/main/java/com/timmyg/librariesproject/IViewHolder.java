@@ -1,6 +1,6 @@
 package com.timmyg.librariesproject;
 
 public interface IViewHolder {
-    void setImage(int image);
+    void setImage(String url);
     int getPos();
 }

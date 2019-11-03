@@ -11,6 +11,8 @@ import com.timmyg.librariesproject.presenter.MainPresenter;
 
 public class MainActivity extends MvpActivity implements ActivityView, MyAdapter.onRecyclerItemClickListener {
 
+    private MyAdapter myAdapter;
+
     @InjectPresenter
     MainPresenter mainPresenter;
 
@@ -23,12 +25,17 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
         RecyclerView recyclerView = findViewById(R.id.recycler_view_activity_three);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        MyAdapter myAdapter = new MyAdapter(mainPresenter.getRecyclerPresenter(),this);
+        myAdapter = new MyAdapter(mainPresenter.getRecyclerPresenter(),this);
         recyclerView.setAdapter(myAdapter);
     }
 
     @Override
     public void onRecyclerItemClick(int position) {
         mainPresenter.onRecyclerItemClick(this, position);
+    }
+
+    @Override
+    public void updateRecyclerView() {
+        myAdapter.notifyDataSetChanged();
     }
 }

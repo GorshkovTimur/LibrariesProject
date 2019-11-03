@@ -8,16 +8,19 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.timmyg.librariesproject.model.picasso.PicassoLoader;
 import com.timmyg.librariesproject.presenter.RecyclerPresenter;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private RecyclerPresenter recyclerPresenter;
     private onRecyclerItemClickListener onRecyclerItemClickListener;
+    private PicassoLoader picassoLoader;
 
     public MyAdapter(RecyclerPresenter recyclerPresenter, onRecyclerItemClickListener onRecyclerItemClickListener) {
         this.recyclerPresenter = recyclerPresenter;
         this.onRecyclerItemClickListener = onRecyclerItemClickListener;
+        picassoLoader = new PicassoLoader();
     }
 
     @NonNull
@@ -29,8 +32,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-    recyclerPresenter.bindView(holder);
     holder.position = position;
+    recyclerPresenter.bindView(holder);
     }
 
     @Override
@@ -55,8 +58,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
 
         @Override
-        public void setImage(int image) {
-            imageView.setImageResource(image);
+        public void setImage(String url) {
+            picassoLoader.loadImage(url, imageView);
         }
 
         @Override
