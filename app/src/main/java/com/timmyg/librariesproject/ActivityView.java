@@ -11,4 +11,6 @@ public interface ActivityView extends MvpView {
     @StateStrategyType(value = SkipStrategy.class)
     void updateRecyclerView();
 
+    void setFirstLaunchFalse();
+
 }
