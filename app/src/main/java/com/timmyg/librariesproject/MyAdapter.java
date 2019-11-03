@@ -8,19 +8,26 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.timmyg.librariesproject.app.App;
 import com.timmyg.librariesproject.model.picasso.PicassoLoader;
 import com.timmyg.librariesproject.presenter.RecyclerPresenter;
+
+import javax.inject.Inject;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private RecyclerPresenter recyclerPresenter;
     private onRecyclerItemClickListener onRecyclerItemClickListener;
-    private PicassoLoader picassoLoader;
+
+
+    @Inject
+    PicassoLoader picassoLoader;
 
     public MyAdapter(RecyclerPresenter recyclerPresenter, onRecyclerItemClickListener onRecyclerItemClickListener) {
+        App.getAppComponent().inject(this);
         this.recyclerPresenter = recyclerPresenter;
         this.onRecyclerItemClickListener = onRecyclerItemClickListener;
-        picassoLoader = new PicassoLoader();
+
     }
 
     @NonNull

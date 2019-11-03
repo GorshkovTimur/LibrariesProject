@@ -19,6 +19,8 @@ import com.timmyg.librariesproject.model.room.HitDao;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -31,16 +33,18 @@ public class MainPresenter extends MvpPresenter<ActivityView> {
 
     private RecyclerInnerPresenter recyclerInnerPresenter;
     private ActivityView activityView;
-    private ApiHelper apiHelper;
     private List<Hit> hitList;
     private HitDao hitDao;
 
     private boolean firstLaunch;
 
+    @Inject
+    ApiHelper apiHelper;
+
     public MainPresenter(ActivityView activityView) {
+        App.getAppComponent().inject(this);
         this.activityView = activityView;
         recyclerInnerPresenter = new RecyclerInnerPresenter();
-        apiHelper = new ApiHelper();
         hitDao = App.getAppDataBase().hitDao();
     }
 
