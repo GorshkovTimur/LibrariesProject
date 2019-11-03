@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.timmyg.librariesproject.Presenter.RecyclerPresenter;
+import com.timmyg.librariesproject.presenter.RecyclerPresenter;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 

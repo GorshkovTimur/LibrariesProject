@@ -1,11 +1,14 @@
-package com.timmyg.librariesproject.Presenter;
+package com.timmyg.librariesproject.presenter;
 
 import android.util.Log;
 
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
 import com.timmyg.librariesproject.DetailedView;
-import com.timmyg.librariesproject.Model.Model;
+import com.timmyg.librariesproject.model.Model;
 
-public class DetailPresenter {
+@InjectViewState
+public class DetailPresenter extends MvpPresenter<DetailedView> {
 
     private static final String TAG = "DetailPresenter";
     //
@@ -33,7 +36,7 @@ public class DetailPresenter {
     public void log() {
         Log.d(TAG, String.valueOf(position));
         image = model.getList().get(position);
-        detailedView.setImage(image);
+        getViewState().setImage(image);
 
     }
 }

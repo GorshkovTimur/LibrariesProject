@@ -1,15 +1,13 @@
 package com.timmyg.librariesproject;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpActivity;
-import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.timmyg.librariesproject.Presenter.MainPresenter;
+import com.timmyg.librariesproject.presenter.MainPresenter;
 
 public class MainActivity extends MvpActivity implements ActivityView, MyAdapter.onRecyclerItemClickListener {
 

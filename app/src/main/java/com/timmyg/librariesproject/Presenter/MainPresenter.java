@@ -1,4 +1,4 @@
-package com.timmyg.librariesproject.Presenter;
+package com.timmyg.librariesproject.presenter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.timmyg.librariesproject.ActivityView;
 import com.timmyg.librariesproject.DetailActivity;
-import com.timmyg.librariesproject.Model.Model;
+import com.timmyg.librariesproject.model.Model;
 
 import com.timmyg.librariesproject.IViewHolder;
 

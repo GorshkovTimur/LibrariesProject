@@ -1,18 +1,27 @@
 package com.timmyg.librariesproject;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
-import com.timmyg.librariesproject.Presenter.DetailPresenter;
+import com.arellomobile.mvp.MvpActivity;
 
-public class DetailActivity extends AppCompatActivity implements DetailedView {
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.timmyg.librariesproject.presenter.DetailPresenter;
+
+public class DetailActivity extends MvpActivity implements DetailedView {
 
     private static final String TAG = "MAINPRESENTER";
-    private DetailPresenter detailPresenter =new DetailPresenter(this);
     private ImageView imageView;
+
+    @InjectPresenter
+    DetailPresenter detailPresenter;
+
+    @ProvidePresenter
+    DetailPresenter providePresenter() {return new DetailPresenter(this);}
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
