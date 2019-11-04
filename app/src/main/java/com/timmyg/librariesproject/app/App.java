@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.room.Room;
 
+import com.squareup.leakcanary.LeakCanary;
 import com.timmyg.librariesproject.model.room.AppDataBase;
 
 public class App extends Application {
@@ -14,6 +15,10 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
         appComponent = generateAppComponent();
         appDataBase = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "room_database").build();
     }
