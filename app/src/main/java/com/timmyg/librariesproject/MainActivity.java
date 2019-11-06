@@ -43,6 +43,18 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        checkPreferences();
+        recyclerViewInit();
+    }
+
+    private void recyclerViewInit() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        myAdapter = new MyAdapter(mainPresenter.getRecyclerPresenter(),this);
+        recyclerView.setAdapter(myAdapter);
+    }
+
+    private void checkPreferences() {
         settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (settings.contains(APP_PREFERENCE_FIRST_LAUNCH)){
             firstLaunch = false;
@@ -50,10 +62,6 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
         } else {
             mainPresenter.setFirstLaunch(firstLaunch);
         }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        myAdapter = new MyAdapter(mainPresenter.getRecyclerPresenter(),this);
-        recyclerView.setAdapter(myAdapter);
     }
 
     @Override

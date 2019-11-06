@@ -52,6 +52,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
 
+    
+
     class MyViewHolder extends RecyclerView.ViewHolder implements IViewHolder, View.OnClickListener {
 
         @BindView(R.id.item_image_view)

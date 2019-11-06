@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class DetailActivity extends MvpActivity implements DetailedView {
 
-    private static final String TAG = "MAINPRESENTER";
+    private static final String TAG_FOR_EXTRACT_DATA = "MAINPRESENTER";
     private String url;
 
     @BindView(R.id.detailed_imageview)
@@ -42,8 +42,11 @@ public class DetailActivity extends MvpActivity implements DetailedView {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         App.getAppComponent().inject(this);
-        url = getIntent().getStringExtra(TAG);
-        detailPresenter.loadImage(url);
+        loadImageFromMainActivity();
+    }
+
+    private void loadImageFromMainActivity() {
+        url = getIntent().getStringExtra(TAG_FOR_EXTRACT_DATA);
         picassoLoader.loadImage(url, imageView);
     }
 
