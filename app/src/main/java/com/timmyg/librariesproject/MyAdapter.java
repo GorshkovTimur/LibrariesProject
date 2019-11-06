@@ -14,6 +14,9 @@ import com.timmyg.librariesproject.presenter.RecyclerPresenter;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private RecyclerPresenter recyclerPresenter;
@@ -51,7 +54,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder implements IViewHolder, View.OnClickListener {
 
-        private ImageView imageView;
+        @BindView(R.id.item_image_view)
+        ImageView imageView;
         private int position = 0;
         onRecyclerItemClickListener onRecyclerItemClickListener;
 
@@ -59,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView, onRecyclerItemClickListener listener) {
             super(itemView);
             this.onRecyclerItemClickListener = listener;
-            imageView = itemView.findViewById(R.id.item_image_view);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
 
         }

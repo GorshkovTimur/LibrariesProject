@@ -14,11 +14,16 @@ import com.timmyg.librariesproject.presenter.DetailPresenter;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends MvpActivity implements DetailedView {
 
     private static final String TAG = "MAINPRESENTER";
-    private ImageView imageView;
     private String url;
+
+    @BindView(R.id.detailed_imageview)
+    ImageView imageView;
 
     @InjectPresenter
     DetailPresenter detailPresenter;
@@ -35,17 +40,14 @@ public class DetailActivity extends MvpActivity implements DetailedView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
         App.getAppComponent().inject(this);
-        imageView = findViewById(R.id.detailed_imageview);
         url = getIntent().getStringExtra(TAG);
         detailPresenter.loadImage(url);
         picassoLoader.loadImage(url, imageView);
     }
 
-    @Override
-    public void setImage(String url) {
 
-    }
 }
 
 

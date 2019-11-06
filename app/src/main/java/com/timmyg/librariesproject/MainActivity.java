@@ -12,6 +12,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.timmyg.librariesproject.presenter.MainPresenter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends MvpActivity implements ActivityView, MyAdapter.onRecyclerItemClickListener {
 
     private SharedPreferences settings;
@@ -20,6 +23,9 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
     private boolean firstLaunch = true ;
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCE_FIRST_LAUNCH = "IS_FIRST";
+
+    @BindView(R.id.recycler_view_activity_three)
+    RecyclerView recyclerView;
 
     @InjectPresenter
     MainPresenter mainPresenter;
@@ -36,6 +42,7 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (settings.contains(APP_PREFERENCE_FIRST_LAUNCH)){
             firstLaunch = false;
@@ -43,8 +50,6 @@ public class MainActivity extends MvpActivity implements ActivityView, MyAdapter
         } else {
             mainPresenter.setFirstLaunch(firstLaunch);
         }
-
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_activity_three);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridLayoutManager);
         myAdapter = new MyAdapter(mainPresenter.getRecyclerPresenter(),this);
