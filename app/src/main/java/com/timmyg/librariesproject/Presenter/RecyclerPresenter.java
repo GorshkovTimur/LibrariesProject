@@ -1,4 +1,4 @@
-package com.timmyg.librariesproject.Presenter;
+package com.timmyg.librariesproject.presenter;
 
 import com.timmyg.librariesproject.IViewHolder;
 

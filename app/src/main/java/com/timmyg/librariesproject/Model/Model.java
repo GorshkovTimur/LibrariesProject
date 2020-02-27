@@ -1,4 +1,4 @@
-package com.timmyg.librariesproject.Model;
+package com.timmyg.librariesproject.model;
 
 import com.timmyg.librariesproject.R;
 

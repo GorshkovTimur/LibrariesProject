@@ -1,5 +1,7 @@
 package com.timmyg.librariesproject;
 
-public interface DetailedView {
-    void setImage(int image);
+import com.arellomobile.mvp.MvpView;
+
+public interface DetailedView extends MvpView {
+
 }
